@@ -1,18 +1,18 @@
-// KUNCI DATABASE (Nama file penyimpnan di browser)
-const DB_KEY = 'keuanganDB_v2';
+// --- KONFIGURASI DATABASE ---
+const DB_KEY = 'keuanganDB_v3_final'; // Kunci penyimpanan di browser
 
-// FUNGSI 1: Ambil Data (Read JSON)
+// 1. Ambil Data (Read)
 function getDatabase() {
     const data = localStorage.getItem(DB_KEY);
     return data ? JSON.parse(data) : [];
 }
 
-// FUNGSI 2: Simpan Data (Write JSON)
+// 2. Simpan Data (Write)
 function saveDatabase(dataArray) {
     localStorage.setItem(DB_KEY, JSON.stringify(dataArray));
 }
 
-// FUNGSI HELPER: Format Rupiah
+// 3. Format Rupiah
 const formatRupiah = (number) => {
     return new Intl.NumberFormat('id-ID', { 
         style: 'currency', 
@@ -21,7 +21,7 @@ const formatRupiah = (number) => {
     }).format(number);
 }
 
-// FUNGSI HITUNG REKAP (Untuk Dashboard)
+// 4. Hitung Rekapitulasi (Untuk Dashboard)
 function hitungRekap() {
     const db = getDatabase();
     let masuk = 0, keluar = 0;
